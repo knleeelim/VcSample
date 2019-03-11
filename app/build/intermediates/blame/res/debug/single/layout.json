@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\layout\\joinconference.xml",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\layout\\joinconference.xml"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\layout\\conference.xml",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\layout\\conference.xml"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\layout\\main.xml",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\layout\\main.xml"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\layout\\roomlink_dialog.xml",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\layout\\roomlink_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\layout\\custom_dialog.xml",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\layout\\custom_dialog.xml"
+    }
+]
