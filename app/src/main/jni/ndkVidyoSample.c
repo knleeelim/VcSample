@@ -547,6 +547,11 @@ VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_SET_OFFLINE, &inEventSetOffline, size
 return;
 }
 
+JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_SignOut(JNIEnv *env, jobject jobj)
+{
+VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_SIGNOFF, 0, 0);
+}
+
 JNIEXPORT void Java_com_vidyo_vidyosample_VidyoSampleApplication_JoinRoomLink(JNIEnv* env, jobject javaThis,
 jstring vidyoportalName, jstring key, jstring displayName, jstring pin) {
 

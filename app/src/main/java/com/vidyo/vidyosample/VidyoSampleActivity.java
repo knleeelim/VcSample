@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.provider.Settings;
 import android.widget.Button;
@@ -173,6 +174,14 @@ public class VidyoSampleActivity extends Activity implements
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
+
+	  //for mobile office to start this app it would need to get package name of this app such as com.vidyo.vidyosample
+
+	  //To get data from Mobile Office app
+	  /*
+	  Intent intent = getIntent();
+	  String[] loginCredentials_array = intent.getStringArrayExtra("loginCredential");*/
+
 	  Log.d(TAG, "entering onCreate");
 	  /*
 	  File fileDir = getFilesDir(); //crashing
@@ -289,7 +298,7 @@ public class VidyoSampleActivity extends Activity implements
 	  }
 	  Log.d(TAG, "leaving onCreate");
   }
-  
+
   private void setupAudio() {
 		int set_Volume = 65535;
 		app.SetSpeakerVolume(set_Volume);
@@ -309,10 +318,11 @@ public class VidyoSampleActivity extends Activity implements
 			cameraPaused = false;
 		}
 		app.DisableAllVideoStreams();
-
+		//app.LogOut();
+		//loginStatus = false;//trial
+		app.SignOut();
 		if (this.isFinishing()) {
-			app.LogOut();
-			loginStatus = false;//trial
+
 		}
 		Log.d(TAG, "onPause End");
 		//app.EnableAllVideoStreams();//trial
@@ -322,7 +332,7 @@ public class VidyoSampleActivity extends Activity implements
 	public void onDestroy() {
 		super.onDestroy();
 		stopDevices();
-
+		//app.SignOut();
 		app.uninitialize();
 	}
 
@@ -340,6 +350,7 @@ public class VidyoSampleActivity extends Activity implements
 	public void onBackPressed() {
 		super.onBackPressed();
 		stopDevices();
+		//app.SignOut();
 		app.uninitialize();
 		finish();
 	}
@@ -464,10 +475,12 @@ public class VidyoSampleActivity extends Activity implements
 					@Override
 					public void onClick(View v) {
 						String url = items.get(index);
+
 						app.JoinRoomLink("http://sol.nownnow.com",
 								items.get(index),
 								"random name",
 								"");
+						app.MuteCamera(true);
 						removeDialog(DIALOG_ROOMLINK);
 					}
 				});

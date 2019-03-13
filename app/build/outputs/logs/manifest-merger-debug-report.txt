@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\knlee\Desktop\new\VcSimpleSample\VcSample\app\src\main\AndroidManifest.xml:2:1-43:12
+ADDED from C:\Users\knlee\Desktop\new\VcSimpleSample\VcSample\app\src\main\AndroidManifest.xml:2:1-44:12
 	package
 		ADDED from C:\Users\knlee\Desktop\new\VcSimpleSample\VcSample\app\src\main\AndroidManifest.xml:3:5-36
 		INJECTED from C:\Users\knlee\Desktop\new\VcSimpleSample\VcSample\app\src\main\AndroidManifest.xml
@@ -88,7 +88,7 @@ ADDED from C:\Users\knlee\Desktop\new\VcSimpleSample\VcSample\app\src\main\Andro
 	android:name
 		ADDED from C:\Users\knlee\Desktop\new\VcSimpleSample\VcSample\app\src\main\AndroidManifest.xml:25:19-67
 application
-ADDED from C:\Users\knlee\Desktop\new\VcSimpleSample\VcSample\app\src\main\AndroidManifest.xml:27:5-41:19
+ADDED from C:\Users\knlee\Desktop\new\VcSimpleSample\VcSample\app\src\main\AndroidManifest.xml:27:5-42:19
 	android:label
 		ADDED from C:\Users\knlee\Desktop\new\VcSimpleSample\VcSample\app\src\main\AndroidManifest.xml:30:9-41
 	android:icon

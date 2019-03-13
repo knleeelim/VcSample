@@ -152,6 +152,7 @@ public class VidyoSampleApplication extends android.app.Application {
 
 	public native void Login(String vidyoportalName, String userName, String passwordName);
 	public native void LogOut();
+	public native void SignOut();
 	public native void JoinRoomLink(String vidyoportalName, String keyName, String dispayName, String key);
 
 	public native void Render();
