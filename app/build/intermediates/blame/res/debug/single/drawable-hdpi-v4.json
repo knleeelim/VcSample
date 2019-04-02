@@ -1,11 +1,43 @@
 [
     {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_off_camera.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-hdpi\\icon_off_camera.png"
+    },
+    {
         "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\vidyo.png",
         "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-hdpi\\vidyo.png"
     },
     {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_off_speaker.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-hdpi\\icon_off_speaker.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher_vidyo.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-hdpi\\ic_launcher_vidyo.png"
+    },
+    {
         "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\vidyologo.png",
         "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-hdpi\\vidyologo.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_on_mic.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-hdpi\\icon_on_mic.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_on_speaker.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-hdpi\\icon_on_speaker.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_on_camera.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-hdpi\\icon_on_camera.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\icon_off_mic.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-hdpi\\icon_off_mic.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\splash.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-hdpi\\splash.png"
     },
     {
         "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4\\ic_launcher.png",

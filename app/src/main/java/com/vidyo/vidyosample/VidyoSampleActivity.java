@@ -3,15 +3,21 @@ package com.vidyo.vidyosample;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.res.Configuration;
+import android.os.IBinder;
+import android.os.RemoteException;
 import android.provider.Settings;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.media.AudioManager;
 import android.os.AsyncTask;
@@ -58,6 +64,8 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
+import net.secuwiz.SecuwaySSLU.service.IMobileApi;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -75,6 +83,7 @@ public class VidyoSampleActivity extends Activity implements
 	private LmiDeviceManagerView bcView; // new 2.2.2
 	private boolean bcCamera_started = false;
 	private static boolean loginStatus = false;
+	private static boolean roomlinkStatus = false;
 	private boolean cameraPaused = false;
 	private boolean cameraStarted = false;
 	public static final int CALL_ENDED = 0;
@@ -115,6 +124,9 @@ public class VidyoSampleActivity extends Activity implements
 	String guestNameString;
 	String roomKeyString;
 	int usedCamera = 1;
+	boolean camOn = true;
+	boolean speakerOn = true;
+	boolean micOn = true;
 
 	private boolean mIsOnPause = false;
 	private ImageView cameraView;
@@ -172,8 +184,53 @@ public class VidyoSampleActivity extends Activity implements
 		}
 	}
 
+    IBinder tempService;
+	private ServiceConnection mConnection = new ServiceConnection(){
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            //서비스 바인더  멤버변수로 저장
+            tempService = service;
+        }
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+        }
+    };
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
+
+      Intent intent = new Intent().setAction("net.secuwiz.SecuwaySSLU.service");
+      intent.setPackage("net.secuwiz.SecuwaySSLU.service");
+      if(bindService(intent, mConnection,BIND_AUTO_CREATE) == true)
+      {
+          System.out.println("bindservice success");
+      }
+
+      String strResult = "error";
+
+      //bindService 가 정상적으로 되고 onServiceConnected() 까지 호출된 다음 실행
+      //서비스에 연결 되었으면 vpn 로그인
+      if(tempService != null)
+      {
+          IMobileApi objAidl = IMobileApi.Stub.asInterface(tempService);
+
+          try {
+              //아이디,비밀번호를 이용하여 vpn 시작
+              //strResult = objAidl.StartVpn(editAddr.getText().toString(), editId.getText().toString(), editPwd.getText().toString());
+			  strResult = objAidl.StartVpn("Address", "id", "pw");
+
+              if(strResult !=null && strResult.equals("0"))
+              {
+                  //연결성공
+                  System.out.println("startvpn");
+              }
+              else
+              {
+                  System.out.println("startvpn error: " + strResult);
+              }
+          } catch (RemoteException e) {
+          }
+      }
 
 	  //for mobile office to start this app it would need to get package name of this app such as com.vidyo.vidyosample
 
@@ -235,8 +292,11 @@ public class VidyoSampleActivity extends Activity implements
 						break;
 
 					case LOGIN_SUCCESSFUL:
-						showDialog(DIALOG_ROOMLINK);
-						//showDialog(DIALOG_JOIN_CONF);
+						if(!roomlinkStatus) {
+							roomlinkStatus = true;
+							showDialog(DIALOG_ROOMLINK);
+							//showDialog(DIALOG_JOIN_CONF);
+						}
 						break;
 				}
 			}
@@ -248,19 +308,9 @@ public class VidyoSampleActivity extends Activity implements
 
 	  getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN | WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);// get the full screen size from android
-	  	  setContentView(R.layout.conference);
+	  setContentView(R.layout.conference);
+
 	  bcView = new LmiDeviceManagerView(this,this);
-	  View C = findViewById(R.id.glsurfaceview);
-	  ViewGroup parent = (ViewGroup) C.getParent();
-	  int index = parent.indexOfChild(C);
-	  parent.removeView(C);
-	  parent.addView(bcView, index);
-
-	  cameraView = (ImageView)findViewById(R.id.action_camera_icon);
-	  cameraView.setOnClickListener(this);
-
-	  /* Camera */
-	  usedCamera = 1;
 
 	  ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 	  NetworkInfo netInfo = cm.getActiveNetworkInfo();
@@ -434,21 +484,29 @@ public class VidyoSampleActivity extends Activity implements
 			.setNegativeButton("Exit", 
 					new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
-					removeDialog(DIALOG_LOGIN); finish();
-					}}).create();
+					removeDialog(DIALOG_LOGIN); loginStatus = false; finish();
+					}}).setCancelable(false).create();
 		} else if (id == DIALOG_ROOMLINK){
+			if(bcView.getParent() != null){
+				Log.d(TAG, "VIEWISFOUND!!!!!!!!");
+				((ViewGroup)bcView.getParent()).removeView(bcView);
+			}
+
 			String guestLoginArray[] = {"sol.nownnow.com", "guest", "Pwv1MbrW9T"};
 
 			portaAddString = guestLoginArray[0];
 			guestNameString = guestLoginArray[1];
 			roomKeyString = guestLoginArray[2];
 
-			//KYUNG Itried get layout instance add button views and then inflate XML of the layout. There is chance that XML is not bound to layout instance if this doesn't work inflate XML first and then find layout by findviewbyid and then add button views
+			//KYUNG I tried to get layout instance add button views and then inflate XML of the layout. There is chance that XML is not bound to layout instance if this doesn't work inflate XML first and then find layout by findviewbyid and then add button views
 			//below won't work as it looks for R.id.roomlink_dialog in whatever view is set for setcontentview at the moment, so inflate first and then findviewbyid
 
 			//inflate roomlink_dialog that will holds roomlink buttons later in the codes
 			LayoutInflater factory = LayoutInflater.from(this);//inflater here has view of mainactivity content view
 			final View buttonView = factory.inflate(R.layout.roomlink_dialog, null);//inflate view this current content with roomlink_dialog
+			//////////////////////////////////////////////////////////////////////////////////////////
+			//MAKE ABOVE VIEW SCROLLABLE//////////////////////////////////////////////////////////////
+			//////////////////////////////////////////////////////////////////////////////////////////
 			LinearLayout roomlink_layout = (LinearLayout) buttonView.findViewById(R.id.roomlink_dialog);
 
 			//at this point make connection with custom DB to get list of rooom links to show
@@ -467,20 +525,46 @@ public class VidyoSampleActivity extends Activity implements
 			for (int i = 0; i < items.size(); i++){
 				Button roomlink_button = new Button(this);//this button have to be created within for loop
 				//If above button is not final, would it be okay to re-assign within the for loop?
-				roomlink_button.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+				roomlink_button.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
 				roomlink_button.setText(items.get(i));//programmatically chage its name
 				roomlink_button.setId(i); //some int id for each buttons
                 final int index = i;
 				roomlink_button.setOnClickListener(new View.OnClickListener() {
 					@Override
 					public void onClick(View v) {
+						if(findViewById(R.id.glsurfaceview) != null){
+							View C = findViewById(R.id.glsurfaceview);
+							ViewGroup parent = (ViewGroup) C.getParent();
+							int index = parent.indexOfChild(C);
+							parent.removeView(C);
+							parent.addView(bcView, index);
+						}else{
+							if(findViewById(R.id.RelativeLayout01) != null){
+								Log.d(TAG, "VIEWISFOUND!!!!!!!!");
+								((RelativeLayout)findViewById(R.id.RelativeLayout01)).addView(bcView);
+							}
+						}
+
+						//cameraView = (ImageView)findViewById(R.id.action_camera_icon);
+						//cameraView.setOnClickListener(this);
+
+	  /* Camera */
+						//usedCamera = 1;
+
 						String url = items.get(index);
+
+						if(!camOn){
+							app.SetPreviewModeON(false);
+							app.DisableAllVideoStreams();
+						}
 
 						app.JoinRoomLink("http://sol.nownnow.com",
 								items.get(index),
 								"random name",
-								"");
-						app.MuteCamera(true);
+								"",!camOn, !micOn, !speakerOn);
+
+						//instead of calling app.MuteCamera separately, read mutecamera, mutemicrophone and mutespeaker button status and add boolean parameters to app.JoinRoomLink
+						//app.MuteCamera(true);
 						removeDialog(DIALOG_ROOMLINK);
 					}
 				});
@@ -489,6 +573,46 @@ public class VidyoSampleActivity extends Activity implements
 			}
 
 			//additional buttons for mute camera
+			View cam = buttonView.findViewById(R.id.action_cam_icon);
+			cam.setOnClickListener(new View.OnClickListener(){
+				@Override
+				public void onClick(View v){
+					if(camOn){
+						((ImageView) v).setImageResource(R.drawable.icon_off_camera);
+						camOn = false;
+					}else{
+						((ImageView) v).setImageResource(R.drawable.icon_on_camera);
+						camOn = true;
+					}
+				}
+			});
+			View sp = buttonView.findViewById(R.id.action_speaker_icon);
+			sp.setOnClickListener(new View.OnClickListener(){
+				@Override
+				public void onClick(View v){
+					if(speakerOn){
+						((ImageView) v).setImageResource(R.drawable.icon_off_speaker);
+						speakerOn = false;
+					}else{
+						((ImageView) v).setImageResource(R.drawable.icon_on_speaker);
+						speakerOn = true;
+					}
+				}
+			});
+			View mic = buttonView.findViewById(R.id.action_mic_icon);
+			mic.setOnClickListener(new View.OnClickListener(){
+				@Override
+				public void onClick(View v){
+					if(micOn){
+						((ImageView) v).setImageResource(R.drawable.icon_off_mic);
+						micOn = false;
+					}else{
+						((ImageView) v).setImageResource(R.drawable.icon_on_mic);
+						micOn = true;
+					}
+				}
+			});
+
 
 			LayoutParams lp = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT);
 			buttonView.setLayoutParams(lp);
@@ -496,9 +620,10 @@ public class VidyoSampleActivity extends Activity implements
 					.setNegativeButton("Exit",
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog, int whichButton) {
+									roomlinkStatus = false;
 									removeDialog(DIALOG_ROOMLINK);
 									showDialog(DIALOG_LOGIN);
-								}}).create();
+								}}).setCancelable(false).create();
 		}
 
 		else if (id == DIALOG_MSG) {  // Handle network errors - cannot proceed situations
@@ -681,7 +806,7 @@ public class VidyoSampleActivity extends Activity implements
 	public void onClick(View arg0) {
 		// TODO Auto-generated method stub
 		switch (arg0.getId()) {
-			case R.id.action_camera_icon:
+/*			case R.id.action_camera_icon:
 				if (usedCamera == 1) {
 					usedCamera = 0;
 				} else {
@@ -689,7 +814,7 @@ public class VidyoSampleActivity extends Activity implements
 				}
 				app.SetCameraDevice(usedCamera);
 
-/*				if (bcCamera.isStarted()) {
+				if (bcCamera.isStarted()) {
 					if (bcCamera.useFrontCamera) {
 						bcCamera.switchCamera(false, false, 0, false, false);
 						app.SetCameraDevice(1);

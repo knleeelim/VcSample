@@ -20,4 +20,7 @@
     <string name="join_dialog_title">Join My own room</string>
     <string name="login">Login</string>
     <string name="secured_checkbox">secured</string>
+    <style name="SplashTheme">
+        <item name="android:windowBackground" parent="Theme.AppCompat.Light.DarkActionBar">@drawable/background_splash</item>
+    </style>
 </resources>

@@ -1,6 +1,34 @@
 [
     {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\icon_off_camera.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-ldpi\\icon_off_camera.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\icon_on_mic.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-ldpi\\icon_on_mic.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\icon_off_speaker.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-ldpi\\icon_off_speaker.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\icon_on_speaker.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-ldpi\\icon_on_speaker.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\icon_on_camera.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-ldpi\\icon_on_camera.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\icon_off_mic.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-ldpi\\icon_off_mic.png"
+    },
+    {
         "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-ldpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi-v4\\ic_launcher_vidyo.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-ldpi\\ic_launcher_vidyo.png"
     }
 ]

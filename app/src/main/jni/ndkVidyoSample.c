@@ -553,7 +553,7 @@ VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_SIGNOFF, 0, 0);
 }
 
 JNIEXPORT void Java_com_vidyo_vidyosample_VidyoSampleApplication_JoinRoomLink(JNIEnv* env, jobject javaThis,
-jstring vidyoportalName, jstring key, jstring displayName, jstring pin) {
+jstring vidyoportalName, jstring key, jstring displayName, jstring pin, jboolean MuteCamera, jboolean MuteMic, jboolean MuteAudio) {
 
 FUNCTION_ENTRY;
 LOGI("Java_com_vidyo_vidyosample_VidyoSampleApplication_JoinRoomLink() enter\n");
@@ -571,9 +571,12 @@ strlcpy(event.portalUri, portalC, sizeof(event.portalUri));
 strlcpy(event.roomKey, keyC, sizeof(event.roomKey));
 strlcpy(event.displayName, displayNameC, sizeof(event.displayName));
 strlcpy(event.pin, pinC, sizeof(event.pin));
+event.muteCamera = MuteCamera;
+event.muteMicrophone = MuteMic;
+event.muteSpeaker = MuteAudio;
 
 LOGI("joiningRoomlink with portalUri %s key %s ", event.portalUri, event.roomKey);
-
+//get boolean parameters for camera audio and volume and set event.muteCamera, event.muteMicrophone and event.muteSpeaker accordingly
 VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_ROOM_LINK, &event, sizeof(VidyoClientInEventRoomLink));
 FUNCTION_EXIT;
 }

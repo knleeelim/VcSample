@@ -1,7 +1,31 @@
 [
     {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_on_speaker.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\icon_on_speaker.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_on_camera.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\icon_on_camera.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_off_mic.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\icon_off_mic.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher_vidyo.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\ic_launcher_vidyo.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_on_mic.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\icon_on_mic.png"
+    },
+    {
         "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\ic_launcher.png",
         "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\splash.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\splash.png"
     },
     {
         "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_front_camera.png",
@@ -10,5 +34,13 @@
     {
         "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_back_camera.png",
         "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\icon_back_camera.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_off_camera.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\icon_off_camera.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_off_speaker.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\icon_off_speaker.png"
     }
 ]

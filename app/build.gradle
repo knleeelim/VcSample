@@ -30,5 +30,6 @@ android {
 
 dependencies {
     compile 'com.google.code.gson:gson:2.1'
+    compile files('libs/MobileApi.jar')
 }
 
