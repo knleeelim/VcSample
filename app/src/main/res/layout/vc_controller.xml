@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/vc_controller"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"></LinearLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:layout_gravity="bottom"
+        android:background="#80FFFFFF">
+
+        <ImageView
+            android:id="@+id/action_cam_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:src="@drawable/icon_on_camera" />
+
+        <ImageView
+            android:id="@+id/action_speaker_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:src="@drawable/icon_on_speaker" />
+
+        <ImageView
+            android:id="@+id/action_mic_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:src="@drawable/icon_on_mic" />
+
+        <ImageView
+            android:id="@+id/action_frontback_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:src="@drawable/icon_front_camera" />
+
+        <ImageView
+            android:id="@+id/action_setting_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:src="@drawable/icon_on_setting" />
+
+        <ImageView
+            android:id="@+id/action_exit_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:src="@drawable/icon_off_conference" />
+
+    </LinearLayout>
+</LinearLayout>

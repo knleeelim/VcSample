@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 #include "VidyoClient.h"
+#include "VidyoClientParameters.h"
+#include "VidyoClientPrivate.h"
 #include "include/AndroidDebug.h"
 #include <pthread.h>
 #include <unistd.h>
@@ -428,7 +430,7 @@ void doSetLogLevelsAndCategories(char* newLogging)
   
 }
 
-JNIEXPORT jboolean Java_com_vidyo_vidyosample_VidyoSampleApplication_Construct(JNIEnv* env, jobject javaThis,
+JNIEXPORT jboolean Java_com_elimnet_kcgvc_VidyoSampleApplication_Construct(JNIEnv* env, jobject javaThis,
                 jstring caFilename, jstring logDir, jstring pathDir, jstring uniqueId, jobject defaultActivity) {
 
 
@@ -452,7 +454,7 @@ JNIEXPORT jboolean Java_com_vidyo_vidyosample_VidyoSampleApplication_Construct(J
 	VidyoRect videoRect = {(VidyoInt)(0), (VidyoInt)(0), (VidyoUint)(100), (VidyoUint)(100)};
     //VidyoUint logSize = DEFAULT_LOG_SIZE;
 
-	applicationJniObj = SampleInitCacheClassReference(env, "com/vidyo/vidyosample/VidyoSampleApplication");
+	applicationJniObj = SampleInitCacheClassReference(env, "com/elimnet/kcgvc/VidyoSampleApplication");
 	// This will start logging to LogCat
     // Use mainly for debugging purposes
 	VidyoClientConsoleLogConfigure(VIDYO_CLIENT_CONSOLE_LOG_CONFIGURATION_ALL);
@@ -516,11 +518,11 @@ JNIEXPORT jboolean Java_com_vidyo_vidyosample_VidyoSampleApplication_Construct(J
 	return (jboolean)returnValue;
 }
 
-JNIEXPORT void Java_com_vidyo_vidyosample_VidyoSampleApplication_Login(JNIEnv* env, jobject javaThis,
+JNIEXPORT void Java_com_elimnet_kcgvc_VidyoSampleApplication_Login(JNIEnv* env, jobject javaThis,
 		jstring vidyoportalName, jstring userName, jstring passwordName) {
 
 	FUNCTION_ENTRY;
-	LOGI("Java_com_vidyo_vidyosample_VidyoSampleApplication_Login() enter\n");
+	LOGI("Java_com_elimnet_kcgvc_VidyoSampleApplication_Login() enter\n");
 
 	const char *portalC = (*env)->GetStringUTFChars(env, vidyoportalName, NULL);
 	const char *usernameC = (*env)->GetStringUTFChars(env, userName, NULL);
@@ -539,7 +541,7 @@ JNIEXPORT void Java_com_vidyo_vidyosample_VidyoSampleApplication_Login(JNIEnv* e
  	FUNCTION_EXIT;
 }
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_LogOut(JNIEnv *env, jobject jobj)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_LogOut(JNIEnv *env, jobject jobj)
 {
 VidyoClientInEventSetOffline inEventSetOffline;
 inEventSetOffline.offline = VIDYO_TRUE;
@@ -547,16 +549,21 @@ VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_SET_OFFLINE, &inEventSetOffline, size
 return;
 }
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_SignOut(JNIEnv *env, jobject jobj)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_SignOut(JNIEnv *env, jobject jobj)
 {
 VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_SIGNOFF, 0, 0);
 }
 
-JNIEXPORT void Java_com_vidyo_vidyosample_VidyoSampleApplication_JoinRoomLink(JNIEnv* env, jobject javaThis,
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_Leave(JNIEnv *env, jobject jobj)
+{
+VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_LEAVE, 0, 0);
+}
+
+JNIEXPORT void Java_com_elimnet_kcgvc_VidyoSampleApplication_JoinRoomLink(JNIEnv* env, jobject javaThis,
 jstring vidyoportalName, jstring key, jstring displayName, jstring pin, jboolean MuteCamera, jboolean MuteMic, jboolean MuteAudio) {
 
 FUNCTION_ENTRY;
-LOGI("Java_com_vidyo_vidyosample_VidyoSampleApplication_JoinRoomLink() enter\n");
+LOGI("Java_com_elimnet_kcgvc_VidyoSampleApplication_JoinRoomLink() enter\n");
 
 const char *portalC = (*env)->GetStringUTFChars(env, vidyoportalName, NULL);
 const char *keyC = (*env)->GetStringUTFChars(env, key, NULL);
@@ -581,7 +588,7 @@ VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_ROOM_LINK, &event, sizeof(VidyoClient
 FUNCTION_EXIT;
 }
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_Dispose(JNIEnv *env, jobject jObj2)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_Dispose(JNIEnv *env, jobject jObj2)
 {
 	FUNCTION_ENTRY;
 	if (VidyoClientStop())
@@ -610,7 +617,7 @@ JNIEXPORT void JNICALL JNI_OnUnload( JavaVM *vm, void *pvt )
 	FUNCTION_EXIT
 }
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_Render(JNIEnv *env, jobject jObj2)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_Render(JNIEnv *env, jobject jObj2)
 {
 //	FUNCTION_ENTRY;
 	doRender();
@@ -618,14 +625,14 @@ JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_Render(
 }
 
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_RenderRelease(JNIEnv *env, jobject jObj2)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_RenderRelease(JNIEnv *env, jobject jObj2)
 {
 	FUNCTION_ENTRY;
 	doSceneReset();
 	FUNCTION_EXIT;
 }
 
- void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_Resize(JNIEnv *env, jobject jobj, jint width, jint height)
+ void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_Resize(JNIEnv *env, jobject jobj, jint width, jint height)
 {
 	FUNCTION_ENTRY;
 	LOGI("***** **** ***** JNI Resize width=%d height=%d\n", width, height);
@@ -635,7 +642,7 @@ JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_RenderR
 }
 
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_TouchEvent(JNIEnv *env, jobject jobj, jint id, jint type, jint x, jint y)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_TouchEvent(JNIEnv *env, jobject jobj, jint id, jint type, jint x, jint y)
 {
 	FUNCTION_ENTRY;
 	doTouchEvent((VidyoInt)id, (VidyoInt)type, (VidyoInt)x, (VidyoInt)y);
@@ -643,7 +650,7 @@ JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_TouchEv
 }
 
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_SetOrientation(JNIEnv *env, jobject jobj,  jint orientation)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_SetOrientation(JNIEnv *env, jobject jobj,  jint orientation)
 {
 FUNCTION_ENTRY;
 
@@ -671,7 +678,7 @@ FUNCTION_EXIT;
 return;
 }
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_SetCameraDevice(JNIEnv *env, jobject jobj, jint camera)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_SetCameraDevice(JNIEnv *env, jobject jobj, jint camera)
 {
 	// FUNCTION_ENTRY
 	VidyoClientRequestConfiguration requestConfig;
@@ -696,7 +703,7 @@ JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_SetCame
         //FUNCTION_EXIT
 }
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_DisableAutoLogin(JNIEnv *env, jobject jobj)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_DisableAutoLogin(JNIEnv *env, jobject jobj)
 {
 	//FUNCTION_ENTRY
 	VidyoClientRequestConfiguration requestConfig;
@@ -707,7 +714,7 @@ JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_Disable
 	//FUNCTION_EXIT
 }
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_SetPreviewModeON(JNIEnv *env, jobject jobj, jboolean pip)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_SetPreviewModeON(JNIEnv *env, jobject jobj, jboolean pip)
 {
 	VidyoClientInEventPreview event;
 	if (pip)
@@ -731,7 +738,7 @@ void _fini()
 	FUNCTION_EXIT;
 }
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_DisableAllVideoStreams(JNIEnv *env, jobject jobj)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_DisableAllVideoStreams(JNIEnv *env, jobject jobj)
 {
     if (!allVideoDisabled)
     {
@@ -746,7 +753,7 @@ JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_Disable
     }
 }
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_EnableAllVideoStreams(JNIEnv *env, jobject jobj)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_EnableAllVideoStreams(JNIEnv *env, jobject jobj)
 {
 	{
 		if (allVideoDisabled)
@@ -763,30 +770,126 @@ JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_EnableA
 	}
 }
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_MuteCamera(JNIEnv *env, jobject jobj, jboolean MuteCamera)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_MuteCamera(JNIEnv *env, jobject jobj, jboolean MuteCamera)
 {
 	VidyoClientInEventMute event;
 	event.willMute = MuteCamera;
 	VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_MUTE_VIDEO, &event, sizeof(VidyoClientInEventMute));
 }
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_StartConferenceMedia(JNIEnv *env, jobject jobj)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_MuteSpeak(JNIEnv *env, jobject jobj, jboolean muteSpeak)
+{
+//FUNCTION ENTRY
+VidyoBool ret = VIDYO_FALSE;
+LOGI("MuteSpeak %d", muteSpeak);
+LOGE("MuteSpeak called\n");
+VidyoClientInEventMute vMute;
+vMute.willMute = muteSpeak;
+ret = VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_MUTE_AUDIO_OUT, &vMute,
+                           sizeof(VidyoClientInEventMute));
+if(ret == VIDYO_TRUE)
+LOGE("MuteSpeak successed\n");
+else
+LOGE("MuteSpeak failed\n");
+return;
+}
+
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_MuteMic(JNIEnv *env, jobject jobj, jboolean muteMic)
+{
+//FUNCTION ENTRY
+VidyoBool ret = VIDYO_FALSE;
+LOGI("MuteMic %d", muteMic);
+LOGE("MuteMic called\n");
+VidyoClientInEventMute vMute;
+vMute.willMute = muteMic;
+ret = VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_MUTE_AUDIO_IN, &vMute,
+                           sizeof(VidyoClientInEventMute));
+//FUNCTION EXIT
+if(ret == VIDYO_TRUE)
+LOGE("MuteMic successed\n");
+else
+LOGE("MuteMic failed\n");
+return;
+}
+
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_StartConferenceMedia(JNIEnv *env, jobject jobj)
 {
     doStartConferenceMedia();
 }
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_HideToolBar(JNIEnv* env, jobject jobj, jboolean disablebar)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_HideToolBar(JNIEnv* env, jobject jobj, jboolean disablebar)
 {
-	LOGI("Java_com_vidyo_vidyosample_VidyoSampleApplication_HideToolBar() enter\n");
+	LOGI("Java_com_elimnet_kcgvc_VidyoSampleApplication_HideToolBar() enter\n");
     VidyoClientInEventEnable event;
-    event.willEnable = VIDYO_TRUE;
+    event.willEnable = VIDYO_FALSE;
     VidyoBool ret = VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_ENABLE_BUTTON_BAR, &event,sizeof(VidyoClientInEventEnable));
     if (!ret)
-        LOGW("Java_com_vidyo_vidyosample_VidyoSampleApplication_HideToolBar() failed!\n");
+        LOGW("Java_com_elimnet_kcgvc_VidyoSampleApplication_HideToolBar() failed!\n");
+}
+
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_SetBackgroundColor(JNIEnv* env, jobject jobj)
+{
+VidyoColor color = {(VidyoUint8)0, (VidyoUint8)0, (VidyoUint8)0};
+VidyoClientInEventColor event = {0};
+event.color = color;
+VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_SET_BACKGROUND_COLOR, &event,sizeof(VidyoClientInEventColor));
+
+}
+
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_SetParticipantsLimit(JNIEnv* env, jobject jobj)
+{
+VidyoUint limit = (VidyoUint)8;
+VidyoClientInEventParticipantsLimit event = {0};
+event.maxNumParticipants = limit;
+VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_PARTICIPANTS_LIMIT, &event,sizeof(VidyoClientInEventParticipantsLimit));
+
+}
+
+void SendPrivateRequest(VidyoClientPrivateRequest request, void *param1, size_t param1Size, size_t param2){
+    VidyoClientRequestPrivate requestPrivate = {0};
+    requestPrivate.requestType = (VidyoUint)request;
+    requestPrivate.requestData = param1;
+    requestPrivate.requestDataSize = param1Size;
+    requestPrivate.reserved = param2;
+
+    VidyoClientSendRequest(VIDYO_CLIENT_REQUEST_PRIVATE, &requestPrivate, sizeof(VidyoClientRequestPrivate));
+
+}
+
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_SetPixelDensity(JNIEnv *env, jobject jobj, jdouble density)
+{
+FUNCTION_ENTRY
+VidyoClientPrivateRequestSetPixelDensity req  = {0};
+req.density = density;
+SendPrivateRequest(VIDYO_CLIENT_PRIVATE_REQUEST_SET_PIXEL_DENSITY, &req, sizeof(VidyoClientPrivateRequestSetPixelDensity), 0);
+
+FUNCTION_EXIT;
+}
+
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_SetFontFile(JNIEnv* env, jobject jobj, jstring path)
+{
+FUNCTION_ENTRY
+const char *fontFileC = (*env)->GetStringUTFChars(env, path, NULL);
+LOGI("Thisthing");
+VidyoBool ret = VIDYO_FALSE;
+LOGI("Java_com_elimnet_kcgvc_VidyoSampleApplication_SetFontFile( fontFile %s) \n", fontFileC);
+
+VidyoClientInEventSetFontFile event = {0};
+if (strlen(fontFileC) <= MAX_FONT_PATH_SIZE-1)
+{
+strcpy(event.fontFileName, fontFileC);
+ret = VidyoClientSendEvent(VIDYO_CLIENT_IN_EVENT_SET_FONT_FILE, &event, sizeof(VidyoClientInEventSetFontFile));
+if(ret == VIDYO_TRUE)
+LOGE("setfontfile successed\n");
+else
+LOGE("setfontfile failed\n");
+
+}
+return;
 }
 
 // this function will enable echo cancellation
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_SetEchoCancellation(JNIEnv *env, jobject jobj, jboolean aecenable)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_SetEchoCancellation(JNIEnv *env, jobject jobj, jboolean aecenable)
 {
 	// get persistent configuration values
 	  VidyoClientRequestConfiguration requestConfiguration;
@@ -812,7 +915,7 @@ JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_SetEcho
 	          LOGE("VIDYO_CLIENT_REQUEST_SET_CONFIGURATION returned error!");
 	  }
 	}
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_SetSpeakerVolume(JNIEnv *env, jobject jobj, jint volume)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_SetSpeakerVolume(JNIEnv *env, jobject jobj, jint volume)
 {
 	//FUNCTION ENTRY
 	VidyoClientRequestVolume volumeRequest;
@@ -823,7 +926,7 @@ JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_SetSpea
 	return;
 }
 
-JNIEXPORT void JNICALL Java_com_vidyo_vidyosample_VidyoSampleApplication_DisableShareEvents(JNIEnv *env, jobject javaThisj)
+JNIEXPORT void JNICALL Java_com_elimnet_kcgvc_VidyoSampleApplication_DisableShareEvents(JNIEnv *env, jobject javaThisj)
 {
 	FUNCTION_ENTRY
 	VidyoClientSendEvent (VIDYO_CLIENT_IN_EVENT_DISABLE_SHARE_EVENTS, 0, 0);

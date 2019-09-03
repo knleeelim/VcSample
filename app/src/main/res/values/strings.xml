@@ -2,10 +2,11 @@
 <resources>
 
     <string name="hello">Welcome to VidyoSampleActivity!</string>
-    <string name="app_name">VidyoSample</string>
-    <string name="login">Login</string>
-    <string name="join_button_text">Join Own Room</string>
-    <string name="join_dialog_title">Join My own room</string>
+    <string name="app_name">현장영상 시스템</string>
+    <string name="login">로그인</string>
+    <string name="join_button_text">화상회의 참가</string>
+    <string name="join_dialog_title">화상회의 방 리스트</string>
     <string name="secured_checkbox">secured</string>
+    <string name="title_activity_splash">SplashActivity</string>
 
 </resources>

@@ -19,31 +19,32 @@
 
         </LinearLayout>
     </ScrollView>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/background_light"
-        android:layout_weight="0">
+        android:layout_weight="0"
+        android:background="#80FFFFFF">
 
         <ImageView
             android:id="@+id/action_cam_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_on_camera"
-            android:layout_weight="1.0"/>
+            android:layout_weight="1.0"
+            android:src="@drawable/icon_on_camera" />
 
         <ImageView
             android:id="@+id/action_speaker_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_on_speaker"
-            android:layout_weight="1.0"/>
+            android:layout_weight="1.0"
+            android:src="@drawable/icon_on_speaker" />
 
         <ImageView
             android:id="@+id/action_mic_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_on_mic"
-            android:layout_weight="1.0"/>
+            android:layout_weight="1.0"
+            android:src="@drawable/icon_on_mic" />
     </LinearLayout>
 </LinearLayout>

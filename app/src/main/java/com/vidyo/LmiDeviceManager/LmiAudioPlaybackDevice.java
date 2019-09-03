@@ -16,9 +16,6 @@
  */
 package com.vidyo.LmiDeviceManager;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.Semaphore;

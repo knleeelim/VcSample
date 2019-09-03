@@ -16,13 +16,10 @@
  */
 package com.vidyo.LmiDeviceManager;
 
-import java.lang.reflect.Method;
-
 import android.content.Context;
 import android.graphics.PixelFormat;
 import android.opengl.GLSurfaceView;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 
 import javax.microedition.khronos.egl.EGL10;

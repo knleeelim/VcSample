@@ -175,8 +175,8 @@
                     "startLine": 16,
                     "startColumn": 4,
                     "startOffset": 662,
-                    "endColumn": 48,
-                    "endOffset": 706
+                    "endColumn": 45,
+                    "endOffset": 703
                 },
                 "from": {
                     "file": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\values\\strings.xml"
@@ -186,9 +186,9 @@
                 "to": {
                     "startLine": 17,
                     "startColumn": 4,
-                    "startOffset": 711,
+                    "startOffset": 708,
                     "endColumn": 65,
-                    "endOffset": 772
+                    "endOffset": 769
                 },
                 "from": {
                     "file": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\values\\strings.xml"
@@ -198,9 +198,9 @@
                 "to": {
                     "startLine": 18,
                     "startColumn": 4,
-                    "startOffset": 777,
-                    "endColumn": 58,
-                    "endOffset": 831
+                    "startOffset": 774,
+                    "endColumn": 52,
+                    "endOffset": 822
                 },
                 "from": {
                     "file": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\values\\strings.xml"
@@ -210,9 +210,9 @@
                 "to": {
                     "startLine": 19,
                     "startColumn": 4,
-                    "startOffset": 836,
-                    "endColumn": 62,
-                    "endOffset": 894
+                    "startOffset": 827,
+                    "endColumn": 56,
+                    "endOffset": 879
                 },
                 "from": {
                     "file": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\values\\strings.xml"
@@ -222,9 +222,9 @@
                 "to": {
                     "startLine": 20,
                     "startColumn": 4,
-                    "startOffset": 899,
-                    "endColumn": 39,
-                    "endOffset": 934
+                    "startOffset": 884,
+                    "endColumn": 37,
+                    "endOffset": 917
                 },
                 "from": {
                     "file": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\values\\strings.xml"
@@ -234,9 +234,9 @@
                 "to": {
                     "startLine": 21,
                     "startColumn": 4,
-                    "startOffset": 939,
+                    "startOffset": 922,
                     "endColumn": 52,
-                    "endOffset": 987
+                    "endOffset": 970
                 },
                 "from": {
                     "file": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\values\\strings.xml"
@@ -246,20 +246,18 @@
                 "to": {
                     "startLine": 22,
                     "startColumn": 4,
-                    "startOffset": 992,
-                    "endLine": 24,
-                    "endColumn": 12,
-                    "endOffset": 1157
+                    "startOffset": 975,
+                    "endColumn": 64,
+                    "endOffset": 1035
                 },
                 "from": {
-                    "file": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\values\\style.xml",
+                    "file": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
-                        "startLine": 2,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 57,
-                        "endLine": 4,
-                        "endColumn": 12,
-                        "endOffset": 224
+                        "startOffset": 369,
+                        "endColumn": 64,
+                        "endOffset": 429
                     }
                 }
             }

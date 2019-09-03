@@ -1,5 +1,9 @@
 [
     {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_back_camerax.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\icon_back_camerax.png"
+    },
+    {
         "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_on_speaker.png",
         "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\icon_on_speaker.png"
     },
@@ -24,8 +28,8 @@
         "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\splash.png",
-        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\splash.png"
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_on_setting.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\icon_on_setting.png"
     },
     {
         "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_front_camera.png",
@@ -40,7 +44,15 @@
         "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\icon_off_camera.png"
     },
     {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_off_conference.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\icon_off_conference.png"
+    },
+    {
         "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_off_speaker.png",
         "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\icon_off_speaker.png"
+    },
+    {
+        "merged": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4\\icon_front_camerax.png",
+        "source": "C:\\Users\\knlee\\Desktop\\new\\VcSimpleSample\\VcSample\\app\\src\\main\\res\\drawable-mdpi\\icon_front_camerax.png"
     }
 ]

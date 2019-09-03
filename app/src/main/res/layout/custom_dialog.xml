@@ -18,44 +18,15 @@
             android:background="@color/dark_gray"
             android:gravity="center_horizontal"
             android:orientation="vertical" >
-        
-        <CheckBox
-            android:id="@+id/secured"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical|left|right"
-            android:text="          Secured" />
 
-        <TextView
-            android:id="@+id/vidyoportal_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:text="VidyoPortal"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <EditText
-            android:id="@+id/vidyoportal_edit"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:autoText="false"
-            android:capitalize="none"
-            android:ems="10"
-            android:gravity="fill_horizontal"
-            android:inputType="textUri"
-            android:scrollHorizontally="true"
-            android:singleLine="true"
-            android:textAppearance="?android:attr/textAppearanceMedium" >
-
-            <requestFocus />
-        </EditText>
 
         <TextView
             android:id="@+id/username_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:text="Username"
+            android:text="사용자 ID"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
@@ -69,14 +40,16 @@
             android:inputType="text"
             android:scrollHorizontally="true"
             android:singleLine="true"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:textAppearance="?android:attr/textAppearanceMedium">
+            <requestFocus />
+        </EditText>
 
         <TextView
             android:id="@+id/password_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:text="Password"
+            android:text="비밀번호"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
@@ -90,6 +63,14 @@
             android:password="true"
             android:scrollHorizontally="true"
             android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <TextView
+            android:id="@+id/error_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text=""
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <Button

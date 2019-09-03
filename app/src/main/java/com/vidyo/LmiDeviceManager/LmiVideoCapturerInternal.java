@@ -32,7 +32,9 @@ import android.graphics.PixelFormat;
 import android.hardware.Camera;
 import android.hardware.Camera.Size;
 import android.media.CameraProfile;
+import android.os.Handler;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -43,7 +45,7 @@ public class LmiVideoCapturerInternal extends SurfaceView implements Camera.Prev
 	private static String TAG = "LmiVideoCapturerInternal";
 	private LmiVideoCapturerCapability[] capabilityArray = null;
 	private int deviceId;
-	private Camera camera = null;
+	private static Camera camera = null;
 	private Camera.Size size;
 	private PixelFormat pixelFormat;
 	private String fourCC;
@@ -76,6 +78,7 @@ public class LmiVideoCapturerInternal extends SurfaceView implements Camera.Prev
 	
 	public LmiVideoCapturerInternal(final Context context, final Activity activity, final String id) {
 		super(context);
+
 		Log.i(TAG,"constructor for "+ id);
 		active = true;
 		deviceId = Integer.parseInt(id);
@@ -146,6 +149,7 @@ public class LmiVideoCapturerInternal extends SurfaceView implements Camera.Prev
         // Set zoom.
         if (mParameters.isZoomSupported())
         {
+			Log.i(TAG, "Zoom Supported");
             mParameters.setZoom(0);
         }
 
@@ -1138,6 +1142,60 @@ public class LmiVideoCapturerInternal extends SurfaceView implements Camera.Prev
 			}			
 		}
 	}
-	
+
+	public static void zoomin()
+	{
+		try{
+			final Camera.Parameters params = camera.getParameters();
+
+			int currentZoom = params.getZoom();
+			Log.d(TAG, "Zoom current" + currentZoom);
+
+			if(currentZoom != 0)
+				params.setZoom(currentZoom - 1);
+
+			//params.setZoom(0);
+
+			final Handler handler = new Handler();
+			handler.postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					camera.setParameters(params);
+				}
+			}, 200);
+
+
+		}catch(Exception e){
+			Log.e(TAG, "failed to open Camera");
+			e.printStackTrace();
+		}
+	}
+
+	public static void zoomout()
+	{
+		try{
+			final Camera.Parameters params = camera.getParameters();
+
+			int currentZoom = params.getZoom();
+			Log.d(TAG, "Zoom current" + currentZoom);
+
+			if(currentZoom != params.getMaxZoom())
+				params.setZoom(currentZoom + 1);
+
+			final Handler handler = new Handler();
+			handler.postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					camera.setParameters(params);
+				}
+			}, 200);
+
+		}catch(Exception e){
+			Log.e(TAG, "failed to open Camera");
+			e.printStackTrace();
+		}
+	}
+
+
 	
 }
