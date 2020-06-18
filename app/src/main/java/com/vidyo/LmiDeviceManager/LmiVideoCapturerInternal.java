@@ -15,6 +15,9 @@
 }
  */
 package com.vidyo.LmiDeviceManager;
+import android.content.BroadcastReceiver;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Build;
 
 import java.io.IOException;
@@ -74,7 +77,8 @@ public class LmiVideoCapturerInternal extends SurfaceView implements Camera.Prev
 	private static final int YV12 = 842094169;
 
 	private int width = 0;
-	private int height = 0;	
+	private int height = 0;
+	private BroadcastReceiver receiver;
 	
 	public LmiVideoCapturerInternal(final Context context, final Activity activity, final String id) {
 		super(context);
@@ -188,6 +192,21 @@ public class LmiVideoCapturerInternal extends SurfaceView implements Camera.Prev
     private int savedFrameRate;
     
 	public boolean start(String format, int width, int height, int frameRate) {
+		receiver = new BroadcastReceiver() {
+			@Override
+			public void onReceive(Context context, Intent intent) {
+				if(intent.getIntExtra("KEYCODE", 0) == KeyEvent.KEYCODE_ZOOM_IN){
+					zoomin();
+				}else{
+					zoomout();
+				}
+
+			}
+		};
+		IntentFilter filter = new IntentFilter();
+		filter.addAction("com.local.receiver");
+		activity.registerReceiver(receiver, filter);
+
 		Camera.Parameters parameters;
 		int pixelFormatInt = 0;
 		boolean forcedOrientation = false;
@@ -371,6 +390,7 @@ public class LmiVideoCapturerInternal extends SurfaceView implements Camera.Prev
 	}
 	
 	public void stop() {
+		activity.unregisterReceiver(receiver);
 		Log.i(TAG, "stop");
 		stopping = true;
 		if (camera != null) {
@@ -1143,13 +1163,15 @@ public class LmiVideoCapturerInternal extends SurfaceView implements Camera.Prev
 		}
 	}
 
-	public static void zoomin()
+	public static void zoomout()
 	{
 		try{
 			final Camera.Parameters params = camera.getParameters();
 
 			int currentZoom = params.getZoom();
 			Log.d(TAG, "Zoom current" + currentZoom);
+			Log.d(TAG, "Zoom mode" + params.get("mode"));
+			Log.d(TAG, "Zoom action" + params.get("zoom-action"));
 
 			if(currentZoom != 0)
 				params.setZoom(currentZoom - 1);
@@ -1171,7 +1193,7 @@ public class LmiVideoCapturerInternal extends SurfaceView implements Camera.Prev
 		}
 	}
 
-	public static void zoomout()
+	public static void zoomin()
 	{
 		try{
 			final Camera.Parameters params = camera.getParameters();

@@ -64,6 +64,7 @@ import com.elimnet.kcgvc.appSampleHttp.Arguments;
 import com.vidyo.LmiDeviceManager.*;
 
 import android.hardware.SensorManager;
+import android.widget.Toast;
 
 import net.secuwiz.SecuwaySSLU.service.IMobileApi;
 
@@ -234,27 +235,27 @@ public class VidyoSampleActivity extends Activity implements
 					//아이디,비밀번호를 이용하여 vpn 시작
 
 					if(mPhoneNumber != null){
-						//String mPhonePassword = mPhoneNumber.substring(3)+"K!";
-						String mPhonePassword = "K!";
+						String mPhonePassword = mPhoneNumber.substring(3)+"K!";
+						//String mPhonePassword = "K!";
 						Log.d(TAG, "phone no: "+mPhoneNumber);
 						Log.d(TAG, mPhonePassword);
 						strResult = objAidl.StartVpn("https://210.103.52.246", mPhoneNumber, mPhonePassword);
 					}else{
 						noPhone = true;
 						Log.d(TAG, "no phone number");
-						//strResult = objAidl.StartVpn("https://210.103.52.246", "elimtest", "elim2018!");
+						strResult = objAidl.StartVpn("https://210.103.52.246", "admin2018", "test001!@");
 
 					}
 					//strResult = objAidl.StartVpn("https://210.103.52.246", "01098128187", "98128187K!");
 					if(strResult !=null && strResult.equals("0"))
 					{
 						//연결성공
-						Log.d(TAG, "startvpn");
+						Log.d(TAG, "!!!!!vpn startvpn");
 						isConnecting = false;
 					}
 					else
 					{
-						Log.d(TAG, "startvpn error: " + strResult);
+						Log.d(TAG, "!!!!!vpn startvpn error: " + strResult);
 						isConnecting = false;
 					}
 				} catch (RemoteException e) {
@@ -286,14 +287,15 @@ public class VidyoSampleActivity extends Activity implements
 					//아이디,비밀번호를 이용하여 vpn 시작
 
 					if(mPhoneNumber != null){
-						//String mPhonePassword = mPhoneNumber.substring(3)+"K!";
-						String mPhonePassword = "K!";
+						String mPhonePassword = mPhoneNumber.substring(3)+"K!";
+						//String mPhonePassword = "K!";
 						Log.d(TAG, mPhoneNumber);
 						Log.d(TAG, mPhonePassword);
-						//strResult = objAidl.StartVpn("https://210.103.52.246", mPhoneNumber, mPhonePassword);
-						strResult = objAidl.StartVpn("https://210.103.52.246", "mtest01", "winitech0)");
+						strResult = objAidl.StartVpn("https://210.103.52.246", mPhoneNumber, mPhonePassword);
+						//strResult = objAidl.StartVpn("https://210.103.52.246", "mtest01", "winitech0)");
 					}else{
-						strResult = objAidl.StartVpn("https://210.103.52.246", "mtest01", "winitech0)");
+						//strResult = objAidl.StartVpn("https://210.103.52.246", "mtest01", "winitech0)");
+						strResult = objAidl.StartVpn("https://210.103.52.246", "admin2018", "test001!@");
 						return "전화번호 없음";
 
 					}
@@ -301,14 +303,14 @@ public class VidyoSampleActivity extends Activity implements
 					{
 						//연결성공
 
-						Log.d(TAG, "startvpn");
+						Log.d(TAG, "!!!!!vpn startvpn");
 						isConnecting = false;
 						return "VPN 접속성공";
 
 					}
 					else
 					{
-						Log.d(TAG, "startvpn error: " + strResult);
+						Log.d(TAG, "!!!!!vpn startvpn error: " + strResult);
 						isConnecting = false;
 
 					}
@@ -320,10 +322,13 @@ public class VidyoSampleActivity extends Activity implements
 		@Override
 		public void onPostExecute(String str){
 			if(checkStatus() == 2){
+				Log.d(TAG, "!!!!!vpn VPN 접속중, 잠시 기다린후 버튼을 누르세요");
 				tv.setText("VPN 접속중, 잠시 기다린후 버튼을 누르세요");
 			}else if(checkStatus() == 1){
+				Log.d(TAG, "!!!!!vpn VPN 접속성공, 로그인 하세요");
 				tv.setText("VPN 접속성공, 로그인 하세요");
 			}else if (checkStatus() == 0){
+				Log.d(TAG, "!!!!!vpn");
 				tv.setText(str);
 			}
 		}
@@ -353,7 +358,7 @@ public class VidyoSampleActivity extends Activity implements
 		intent.setPackage("net.secuwiz.SecuwaySSLU.service");
 		if(bindService(intent, mConnection,BIND_AUTO_CREATE) == true)
 		{
-			Log.d(TAG, "bindservice success");
+			Log.d(TAG, "!!!!!vpn bindservice success");
 		}else{
 			dialogMessage = new String("Network Unavailable!\n" + "Check network connection.");
 			showDialog(FINISH_MSG);
@@ -380,7 +385,7 @@ public class VidyoSampleActivity extends Activity implements
 		//nStatus 1 이면 연결됨
 		//nStatus 2 면 연결 중
 		//vpn 상태는 0 에서 시작해서 2를 반복하다가 1로 변하면 연결이 된 상태임
-		Log.d(TAG, "!!!!!"+nStatus);
+		Log.d(TAG, "!!!!!vpn 상태: "+nStatus);
 		return nStatus;
 	}
 
@@ -894,6 +899,19 @@ public class VidyoSampleActivity extends Activity implements
 									speakerphoneOn = !speakerphoneOn;
 									*/
 									zoommode = !zoommode;
+									String toast_message;
+
+									if (zoommode){
+										toast_message = "카메라 줌 조절 모드";
+									}else{
+										toast_message = "볼륨 조절 모드";
+									}
+									Toast toast = Toast.makeText(getApplicationContext(),
+											toast_message,
+											Toast.LENGTH_SHORT);
+
+									toast.show();
+
 								}
 							});
 							//speakerphone
@@ -1299,7 +1317,7 @@ public class VidyoSampleActivity extends Activity implements
 		getBaseContext().getResources().updateConfiguration(configuration, metrics);
 	}
 
-	@Override
+	/*@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
 		if(zoommode){
@@ -1310,6 +1328,28 @@ public class VidyoSampleActivity extends Activity implements
 			} else if (keyCode == KeyEvent.KEYCODE_ZOOM_OUT) {
 				Log.d(TAG, "Zoom OUT");
 				LmiVideoCapturerInternal.zoomout();
+
+			}
+			return true;
+		}
+		else {
+			return super.onKeyDown(keyCode, event);
+		}
+	}*/
+	public boolean onKeyDown(int keyCode, KeyEvent event)
+	{
+		if(zoommode){
+			if (keyCode == KeyEvent.KEYCODE_ZOOM_IN) {
+				Log.d(TAG, "Zoom IN");
+				Intent intent=new Intent("com.local.receiver");
+				intent.putExtra("KEYCODE", KeyEvent.KEYCODE_ZOOM_IN);
+				sendBroadcast(intent);
+
+			} else if (keyCode == KeyEvent.KEYCODE_ZOOM_OUT) {
+				Log.d(TAG, "Zoom OUT");
+				Intent intent=new Intent("com.local.receiver");
+				intent.putExtra("KEYCODE", KeyEvent.KEYCODE_ZOOM_OUT);
+				sendBroadcast(intent);
 
 			}
 			return true;
