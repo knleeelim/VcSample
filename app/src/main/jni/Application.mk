@@ -4,4 +4,4 @@ APP_BUILD_SCRIPT := $(APP_PROJECT_PATH)/jni/Android.mk
 APP_OPTIM := release
 #APP_ABI := $(VIDYO_TYPE_OF_PROCESSOR)
 APP_ABI := armeabi-v7a
-APP_STL := gnustl_static
+APP_STL := c++_static

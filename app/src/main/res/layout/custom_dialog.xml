@@ -22,15 +22,15 @@
 
 
         <TextView
-            android:id="@+id/username_view"
+            android:id="@+id/joincode_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:text="사용자 ID"
+            android:text="접속 코드"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/username_edit"
+            android:id="@+id/joincode_edit"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:layout_weight="1"
@@ -45,15 +45,15 @@
         </EditText>
 
         <TextView
-            android:id="@+id/password_view"
+            android:id="@+id/name_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:text="비밀번호"
+            android:text="성명"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <EditText
-            android:id="@+id/password_edit"
+            android:id="@+id/name_edit"
             android:layout_width="fill_parent"
             android:layout_height="40dp"
             android:layout_weight="1"

@@ -18,7 +18,7 @@
         android:layout_gravity="bottom"
         android:background="#80FFFFFF">
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/action_cam_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1.0"
-            android:src="@drawable/icon_on_mic" />
+            android:src="@drawable/icon_on_mic" />-->
 
         <ImageView
             android:id="@+id/action_frontback_icon"

@@ -192,7 +192,7 @@ public class LmiVideoCapturerInternal extends SurfaceView implements Camera.Prev
     private int savedFrameRate;
     
 	public boolean start(String format, int width, int height, int frameRate) {
-		receiver = new BroadcastReceiver() {
+/*		receiver = new BroadcastReceiver() {
 			@Override
 			public void onReceive(Context context, Intent intent) {
 				if(intent.getIntExtra("KEYCODE", 0) == KeyEvent.KEYCODE_ZOOM_IN){
@@ -205,7 +205,7 @@ public class LmiVideoCapturerInternal extends SurfaceView implements Camera.Prev
 		};
 		IntentFilter filter = new IntentFilter();
 		filter.addAction("com.local.receiver");
-		activity.registerReceiver(receiver, filter);
+		activity.registerReceiver(receiver, filter);*/
 
 		Camera.Parameters parameters;
 		int pixelFormatInt = 0;
@@ -390,7 +390,7 @@ public class LmiVideoCapturerInternal extends SurfaceView implements Camera.Prev
 	}
 	
 	public void stop() {
-		activity.unregisterReceiver(receiver);
+		//activity.unregisterReceiver(receiver);
 		Log.i(TAG, "stop");
 		stopping = true;
 		if (camera != null) {
@@ -1163,7 +1163,7 @@ public class LmiVideoCapturerInternal extends SurfaceView implements Camera.Prev
 		}
 	}
 
-	public static void zoomout()
+	/*public static void zoomout()
 	{
 		try{
 			final Camera.Parameters params = camera.getParameters();
@@ -1216,7 +1216,7 @@ public class LmiVideoCapturerInternal extends SurfaceView implements Camera.Prev
 			Log.e(TAG, "failed to open Camera");
 			e.printStackTrace();
 		}
-	}
+	}*/
 
 
 	

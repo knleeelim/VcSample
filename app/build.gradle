@@ -5,18 +5,26 @@ android {
     buildToolsVersion "23.0.2"
     sourceSets.main {
         jni.srcDirs = []
-        jniLibs.srcDir 'src/main/libs'
+        //jniLibs.srcDir 'src/main/libs'
     }
     defaultConfig {
-        applicationId "com.elimnet.kcgvc"
+        applicationId "com.elimnet.nownproctor"
         minSdkVersion 16
         targetSdkVersion 17
         ndk {
             moduleName "ndkVidyoSample"
+            abiFilters "armeabi-v7a"//, "x86", "armeabi"
         }
-        versionCode 2
-        versionName '2.0'
+        versionCode 1
+        versionName '1.0'
     }
+
+    externalNativeBuild{
+        ndkBuild{
+            path 'src/main/jni/Android.mk'
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false

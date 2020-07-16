@@ -13,5 +13,6 @@
     <color name="green">#669B15</color>
     <color name="light_blue">#BBBBFF</color>    
     <color name="dark_blue">#101D6C</color>
-    <color name="blue">#172DA6</color>    
+    <color name="blue">#172DA6</color>
+    <color name="orange">#ec5e31</color>
 </resources>
