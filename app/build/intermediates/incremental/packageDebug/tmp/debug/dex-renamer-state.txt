@@ -1,0 +1,4 @@
+#Fri Jul 03 14:17:48 KST 2020
+base.0=/Users/knlee/Desktop/VcSample/app/build/intermediates/dex/debug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
